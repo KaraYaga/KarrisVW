@@ -3337,37 +3337,45 @@ i.fa-solid, i.fa-brands, i.fa {
 }
 
 /* Modal Formatting */
+/* Modal container (hidden by default) */
 .modal {
 	display: none;
 	position: fixed;
 	z-index: 1000;
+	padding-top: 5%;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0,0,0,0.8);
 	overflow: auto;
+	background-color: rgba(0,0,0,0.8);
   }
   
+  /* Modal content box */
   .modal-content {
-	background: white;
+	background-color: #fff;
+	margin: auto;
 	padding: 2em;
-	margin: 5% auto;
+	border-radius: 1em;
+	width: 80%;
 	max-width: 600px;
-	border-radius: 0.5em;
+	text-align: center;
 	position: relative;
   }
   
-  .modal-content img {
-	max-width: 100%;
-	margin-top: 1em;
-  }
-  
-  .modal .close {
+  /* Close button */
+  .modal-content .close {
 	position: absolute;
-	right: 1em;
 	top: 1em;
+	right: 1em;
 	font-size: 1.5em;
 	cursor: pointer;
+  }
+  
+  /* Modal image styling */
+  .modal-content img {
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 1em;
   }
 	}

@@ -536,5 +536,54 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			</div>
 		  </div>
 
+<!-- Modal Function-->
+		<script>
+			$(document).ready(function () {
+			const $modal = $('#projectModal');
+			const $modalTitle = $('#modal-title');
+			const $modalDesc = $('#modal-desc');
+			const $modalImg = $('#modal-img');
+			
+			function openModal(projectId) {
+				const data = {
+				dearlydamned: {
+					title: '2025 DemoReel',
+					description: 'An overview of my 2024-2025 studies.',
+					image: 'images/DearlyDamned.png'
+				},
+				leech: {
+					title: 'L.E.E.C.H',
+					description: 'A satirical narrative game I prototyped in Unreal...',
+					image: 'images/LEECH.png'
+				},
+				bubblepopper: {
+					title: 'Bubble Popper!',
+					description: 'Created in 2 days during the 2025 Global Game Jam...',
+					image: 'images/BubblePopper.png'
+				}
+				};
+			
+				const project = data[projectId];
+				if (project) {
+				$modalTitle.text(project.title);
+				$modalDesc.text(project.description);
+				$modalImg.attr('src', project.image);
+				$modal.fadeIn(200);
+				}
+			}
+			
+			// Close modal
+			$modal.find('.close').on('click', function () {
+				$modal.fadeOut(200);
+			});
+			
+			$modal.on('click', function (e) {
+				if ($(e.target).is($modal)) $modal.fadeOut(200);
+			});
+			
+			// Expose function globally
+			window.openModal = openModal;
+			});
+		</script>
 	</body>
 </html>
