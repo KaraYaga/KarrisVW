@@ -2416,7 +2416,7 @@ input, select, textarea {
 		
 		/* Adjust the text and icon alignment */
 		ul.feature-icons li span {
-			margin-left: 3em; /* Create space between the icon and text (this controls the distance) */
+			margin-left: 1; /* Create space between the icon and text (this controls the distance) */
 			line-height: 1.5em; /* Adjust line height for proper spacing */
 		}
 
