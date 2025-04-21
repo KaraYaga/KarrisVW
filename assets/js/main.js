@@ -173,7 +173,7 @@ function openModal(projectId) {
     DemoReel2025: {
       title: '2025 DemoReel',
       description: 'An overview of my 2024-2025 studies.',
-      video: 'https://www.youtube.com/embed/1Rp6AXl80rY?autoplay=1', // Video URL with autoplay
+      video: 'https://www.youtube.com/embed/1Rp6AXl80rY?si=j9z_axcUA38k7-BM', // Video URL with autoplay
       links: []
     },
     leech: {
