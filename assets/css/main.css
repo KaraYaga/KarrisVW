@@ -2416,7 +2416,7 @@ input, select, textarea {
 		
 		/* Adjust the text and icon alignment */
 		ul.feature-icons li span {
-			margin-left: .8; /* Create space between the icon and text (this controls the distance) */
+			margin-left: 1; /* Create space between the icon and text (this controls the distance) */
 			line-height: 1.5em; /* Adjust line height for proper spacing */
 		}
 
@@ -3333,7 +3333,7 @@ i[class^="fa-"], i[class*=" fa-"] {
 
 /* Optional: You could also add this to apply a consistent size if you want */
 i.fa-solid, i.fa-brands, i.fa {
-    font-size: 3em; /* Adjust size if needed */
+    font-size: 2em; /* Adjust size if needed */
 }
 
 	}
