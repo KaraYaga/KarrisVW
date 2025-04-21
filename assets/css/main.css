@@ -2386,9 +2386,11 @@ input, select, textarea {
 			position: relative;
 			vertical-align: top;
 			width: 48%;
+			font-size: 1.2em; /* Make sure the text size is reasonable */
 		}
 
-			ul.feature-icons li:before {
+			ul.feature-icons li:before 
+			{
 				-moz-osx-font-smoothing: grayscale;
 				-webkit-font-smoothing: antialiased;
 				display: inline-block;
@@ -2412,7 +2414,9 @@ input, select, textarea {
 				position: absolute;
 				text-align: center;
 				top: 0;
+				left: 0;
 				width: 2.5em;
+				font-size: 1.25em; /* Set the size of the icon */
 			}
 
 /* Icons */
