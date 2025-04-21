@@ -158,6 +158,7 @@
 
 })(jQuery);
 
+//MY ADDITIONS
 // Modal Setup
 	const $modal = $('#project-modal');
 	const $modalTitle = $modal.find('.modal-title');
@@ -167,7 +168,7 @@
 // Modal Function
 function openModal(projectId) {
 	let data = {
-		dearlydamned: {
+		DemoReel2025: {
 			title: '2025 DemoReel',
 			description: 'An overview of my 2024-2025 studies.',
 			image: 'images/DearlyDamned.png'
@@ -177,7 +178,7 @@ function openModal(projectId) {
 			description: 'A satirical narrative game I prototyped in Unreal...',
 			image: 'images/LEECH.png'
 		},
-		bubblepopper: {
+		BP: {
 			title: 'Bubble Popper!',
 			description: 'Created in 2 days during the 2025 Global Game Jam...',
 			image: 'images/BubblePopper.png'
