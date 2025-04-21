@@ -2422,10 +2422,10 @@ input, select, textarea {
 	ul.feature-icons li span 
 	{
 		display: block;
-		margin-left: 35px; /* Indentation for text after icon */
+		margin-left: 50px; /* Indentation for text after icon */
 		line-height: 1.5em; /* Adjust line height for proper spacing */
   	}
-	
+
 /* Icons */
 
 	ul.icons {
