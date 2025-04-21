@@ -3313,4 +3313,12 @@ input, select, textarea {
 				padding: 0;
 			}
 
+	/* MY ADDITIONS*/
+
+	.title-line 
+	{
+		white-space: nowrap;
+	}
+
+
 	}
