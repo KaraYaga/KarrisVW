@@ -159,10 +159,10 @@
 })(jQuery);
 
 // Modal Setup
-	var $modal = $('#project-modal');
-	var $modalTitle = $('#project-title');
-	var $modalDesc = $('#project-description');
-	var $modalImg = $('#project-image');
+	const $modal = $('#project-modal');
+	const $modalTitle = $modal.find('.modal-title');
+	const $modalDesc = $modal.find('.modal-description');
+	const $modalImg = $modal.find('.modal-image');
 
 // Modal Function
 function openModal(projectId) {
