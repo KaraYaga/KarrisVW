@@ -158,83 +158,87 @@
 
 })(jQuery);
 
-//MY ADDITIONS
+///MY ADDITIONS
 // Modal Setup
-const $modal = $('#project-modal');
-const $modalTitle = $modal.find('.modal-title');
-const $modalDesc = $modal.find('.modal-description');
-const $modalImg = $modal.find('.modal-image');
-const $videoFrame = $modal.find('.modal-video');
-const linkContainer = $modal.find('.modal-links')[0];
 
 function openModal(projectId) {
-  const data = {
-    DemoReel2025: {
-      title: '2025 DemoReel',
-      description: 'An overview of my 2024-2025 studies.',
-      video: 'https://www.youtube.com/embed/1Rp6AXl80rY?autoplay=1',
-      links: []
-    },
-    leech: {
-      title: 'L.E.E.C.H',
-      description: 'A satirical narrative game I prototyped in Unreal...',
-      image: 'images/LEECH.png',
-      links: []
-    },
-    BP: {
-      title: 'Bubble Popper!',
-      description: 'Created in 2 days during the 2025 Global Game Jam...',
-      image: 'images/BubblePopper.png',
-      links: [
-        { label: 'LinkedIn', url: 'https://www.linkedin.com/in/kvwebb' },
-        { label: 'Global Game Jam', url: 'https://globalgamejam.org/2025/games/bubble-popper' }
-      ]
-    }
-  };
-
-  const project = data[projectId];
-  if (!project) return;
-
-  $modalTitle.text(project.title);
-  $modalDesc.text(project.description);
-
-  // Show video or image
-  if (project.video) {
-    $modalImg.hide();
-    $videoFrame.show();
-    $videoFrame.attr('src', project.video);
-  } else {
-    $videoFrame.hide();
-    $modalImg.show().attr('src', project.image || '');
+	// Find the modal and elements inside it
+	const $modal = $('#project-modal');
+	const $modalTitle = $modal.find('.modal-title');
+	const $modalDesc = $modal.find('.modal-description');
+	const $modalImg = $modal.find('.modal-image');
+	const $videoFrame = $modal.find('.modal-video');
+	const linkContainer = $modal.find('.modal-links')[0];  // This is a plain DOM element (not jQuery)
+  
+	const data = {
+	  DemoReel2025: {
+		title: '2025 DemoReel',
+		description: 'An overview of my 2024-2025 studies.',
+		video: 'https://www.youtube.com/embed/1Rp6AXl80rY?autoplay=1',
+		links: []
+	  },
+	  leech: {
+		title: 'L.E.E.C.H',
+		description: 'A satirical narrative game I prototyped in Unreal...',
+		image: 'images/LEECH.png',
+		links: []
+	  },
+	  BP: {
+		title: 'Bubble Popper!',
+		description: 'Created in 2 days during the 2025 Global Game Jam...',
+		image: 'images/BubblePopper.png',
+		links: [
+		  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/kvwebb' },
+		  { label: 'Global Game Jam', url: 'https://globalgamejam.org/2025/games/bubble-popper' }
+		]
+	  }
+	};
+  
+	const project = data[projectId];
+	if (!project) return;
+  
+	// Set the modal title and description
+	$modalTitle.text(project.title);
+	$modalDesc.text(project.description);
+  
+	// Show video or image
+	if (project.video) {
+	  $modalImg.hide();
+	  $videoFrame.show();
+	  $videoFrame.attr('src', project.video);
+	} else {
+	  $videoFrame.hide();
+	  $modalImg.show().attr('src', project.image || '');
+	}
+  
+	// Add links if available
+	linkContainer.innerHTML = '';  // Clear previous links
+	if (project.links) {
+	  project.links.forEach(link => {
+		const a = document.createElement('a');
+		a.href = link.url;
+		a.target = '_blank';
+		a.textContent = link.label;
+		a.style.marginRight = '1em';
+		a.style.fontWeight = 'bold';
+		a.style.color = '#0077cc';
+		linkContainer.appendChild(a);
+	  });
+	}
+  
+	// Show the modal
+	$modal.fadeIn(200);
   }
-
-  // Add links
-  linkContainer.innerHTML = '';
-  if (project.links) {
-    project.links.forEach(link => {
-      const a = document.createElement('a');
-      a.href = link.url;
-      a.target = '_blank';
-      a.textContent = link.label;
-      a.style.marginRight = '1em';
-      a.style.fontWeight = 'bold';
-      a.style.color = '#0077cc';
-      linkContainer.appendChild(a);
-    });
-  }
-
-  $modal.fadeIn(200);
-}
-
-// Close modal and stop video
-$modal.find('.close').on('click', () => {
-  $modal.fadeOut(200);
-  $videoFrame.attr('src', ''); // Stop video
-});
-
-$modal.on('click', function (e) {
-  if ($(e.target).is($modal)) {
-    $modal.fadeOut(200);
-    $videoFrame.attr('src', ''); // Stop video
-  }
-});
+  
+  // Close modal and stop video
+  $modal.find('.close').on('click', () => {
+	$modal.fadeOut(200);
+	$videoFrame.attr('src', '');  // Stop video
+  });
+  
+  $modal.on('click', function (e) {
+	if ($(e.target).is($modal)) {
+	  $modal.fadeOut(200);
+	  $videoFrame.attr('src', '');  // Stop video
+	}
+  });
