@@ -13,12 +13,6 @@
 		$nav = $('#nav'),
 		$wrapper = $('#wrapper');
 
-	// Modal Editions
-		var $modal = $('#project-modal');
-		var $modalTitle = $('#project-title');
-		var $modalDesc = $('#project-description');
-		var $modalImg = $('#project-image');
-
 	// Breakpoints.
 		breakpoints({
 			xlarge:   [ '1281px',  '1680px' ],
@@ -162,40 +156,46 @@
 			}
 		});
 
-	// Modal Function
-	function openModal(projectId) {
-		let data = {
-			dearlydamned: {
-				title: '2025 DemoReel',
-				description: 'An overview of my 2024-2025 studies.',
-				image: 'images/DearlyDamned.png'
-			},
-			leech: {
-				title: 'L.E.E.C.H',
-				description: 'A satirical narrative game I prototyped in Unreal...',
-				image: 'images/LEECH.png'
-			},
-			bubblepopper: {
-				title: 'Bubble Popper!',
-				description: 'Created in 2 days during the 2025 Global Game Jam...',
-				image: 'images/BubblePopper.png'
-			}
-		};
-	
-		if (data[projectId]) {
-			$modalTitle.text(data[projectId].title);
-			$modalDesc.text(data[projectId].description);
-			$modalImg.attr('src', data[projectId].image);
-			$modal.fadeIn(200);
-		}
-	}
-	
-	// Close modal on clicking X or background
-	$modal.find('.close').on('click', function() {
-		$modal.fadeOut(200);
-	});
-	$modal.on('click', function(e) {
-		if ($(e.target).is($modal)) $modal.fadeOut(200);
-	});
-
 })(jQuery);
+
+// Modal Setup
+	var $modal = $('#project-modal');
+	var $modalTitle = $('#project-title');
+	var $modalDesc = $('#project-description');
+	var $modalImg = $('#project-image');
+
+// Modal Function
+function openModal(projectId) {
+	let data = {
+		dearlydamned: {
+			title: '2025 DemoReel',
+			description: 'An overview of my 2024-2025 studies.',
+			image: 'images/DearlyDamned.png'
+		},
+		leech: {
+			title: 'L.E.E.C.H',
+			description: 'A satirical narrative game I prototyped in Unreal...',
+			image: 'images/LEECH.png'
+		},
+		bubblepopper: {
+			title: 'Bubble Popper!',
+			description: 'Created in 2 days during the 2025 Global Game Jam...',
+			image: 'images/BubblePopper.png'
+		}
+	};
+
+	if (data[projectId]) {
+		$modalTitle.text(data[projectId].title);
+		$modalDesc.text(data[projectId].description);
+		$modalImg.attr('src', data[projectId].image);
+		$modal.fadeIn(200);
+	}
+}
+
+// Close modal on clicking X or background
+$modal.find('.close').on('click', function() {
+	$modal.fadeOut(200);
+});
+$modal.on('click', function(e) {
+	if ($(e.target).is($modal)) $modal.fadeOut(200);
+});
