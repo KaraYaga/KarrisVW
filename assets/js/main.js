@@ -164,7 +164,7 @@ const $modal = $('#project-modal');
 const $modalTitle = $modal.find('.modal-title');
 const $modalDesc = $modal.find('.modal-description');
 const $modalImg = $modal.find('.modal-image');
-const video = $modal.find('.modal-video')[0]; // Get DOM element
+const $videoFrame = $modal.find('.modal-video');
 const linkContainer = $modal.find('.modal-links')[0]; // Get DOM element
 
 // Modal Function
@@ -173,19 +173,14 @@ function openModal(projectId) {
     DemoReel2025: {
       title: '2025 DemoReel',
       description: 'An overview of my 2024-2025 studies.',
-      video: 'videos/DemoReel_25_VID.mp4',
-	  links: [
-		//
-	  ]
-     
+      video: 'https://www.youtube.com/embed/1Rp6AXl80rY?autoplay=1', // Video URL with autoplay
+      links: []
     },
     leech: {
       title: 'L.E.E.C.H',
       description: 'A satirical narrative game I prototyped in Unreal...',
       image: 'images/LEECH.png',
-      links: [
-        //{ label: 'GitHub', url: 'https://github.com/yourname/leech' }
-      ]
+      links: []
     },
     BP: {
       title: 'Bubble Popper!',
@@ -201,24 +196,23 @@ function openModal(projectId) {
   const project = data[projectId];
   if (!project) return;
 
+  // Set Title and Description
   $modalTitle.text(project.title);
   $modalDesc.text(project.description);
 
-  // Handle media
+  // Handle media (image or video)
   if (project.video) {
     $modalImg.hide();
-    video.style.display = 'block';
-    video.src = project.video;
-    video.load();
-    video.play();
+    $videoFrame.show();
+    $videoFrame.attr('src', project.video); // Set video source
   } else {
-    video.style.display = 'none';
+    $videoFrame.hide();
     $modalImg.show();
-    $modalImg.attr('src', project.image || '');
+    $modalImg.attr('src', project.image || ''); // Show image if no video
   }
 
-  // Handle links
-  linkContainer.innerHTML = '';
+  // Handle Links
+  linkContainer.innerHTML = ''; // Clear previous links
   if (project.links && project.links.length > 0) {
     project.links.forEach(link => {
       const a = document.createElement('a');
@@ -233,17 +227,19 @@ function openModal(projectId) {
     });
   }
 
+  // Show modal
   $modal.fadeIn(200);
 }
 
 // Close modal on X or outside click
 $modal.find('.close').on('click', function () {
   $modal.fadeOut(200);
-  video.pause(); // stop video on close
+  $videoFrame.attr('src', ''); // Stop the video by clearing the iframe src
 });
+
 $modal.on('click', function (e) {
   if ($(e.target).is($modal)) {
     $modal.fadeOut(200);
-    video.pause(); // stop video on click-away
+    $videoFrame.attr('src', ''); // Stop the video by clearing the iframe src
   }
 });
