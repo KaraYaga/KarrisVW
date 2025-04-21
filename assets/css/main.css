@@ -2373,58 +2373,52 @@ input, select, textarea {
 
 /* Feature Icons */
 
-	ul.feature-icons 
-	{
-		list-style: none;
-		padding-left: 0;
-	}
-	
-	ul.feature-icons li 
-	{
-		text-decoration: none;
-		display: flex;
-		align-items: center; /* Align the icon with the text */
-		margin-bottom: 1.5em; /* Space between list items */
-		padding: 0.35em 0 0 3.5em; /* Adjust padding for icon spacing */
-		position: relative;
-		vertical-align: top;
-		font-size: 1.2em; /* Make sure the text size is reasonable */
-	}
-	
-	/* Icon Circle */
-	ul.feature-icons li:before 
-	{
-		-moz-osx-font-smoothing: grayscale;
-		-webkit-font-smoothing: antialiased;
-		display: inline-block;
-		font-style: normal;
-		font-variant: normal;
-		text-rendering: auto;
-		line-height: 1;
-		text-transform: none !important;
-		font-family: 'Font Awesome 5 Free';
-		font-weight: 900; /* Ensure icons are bold */
-		background: #4acaa8;
-		border-radius: 100%;
-		color: #ffffff;
-		display: block;
-		height: 2.5em; /* Circle size */
-		width: 2.5em;  /* Circle size */
-		line-height: 2.5em; /* Center icon vertically */
-		position: absolute;
-		text-align: center;
-		top: 0;
-		left: 0;
-		font-size: 1.25em; /* Icon size */
-	}
-	
-	/* Adjust the text and icon alignment */
-	ul.feature-icons li span 
-	{
-		display: block;
-		margin-left: 50px; /* Indentation for text after icon */
-		line-height: 1.5em; /* Adjust line height for proper spacing */
-  	}
+		ul.feature-icons {
+			list-style: none;
+			padding-left: 0;
+		}
+		
+		ul.feature-icons li {
+			text-decoration: none;
+			display: flex;
+			align-items: center; /* Align the icon with the text */
+			margin-bottom: 1.5em; /* Space between list items */
+			position: relative;
+			vertical-align: top;
+			font-size: 1.2em; /* Text size */
+		}
+		
+		/* Icon Circle */
+		ul.feature-icons li:before {
+			-moz-osx-font-smoothing: grayscale;
+			-webkit-font-smoothing: antialiased;
+			display: inline-block;
+			font-style: normal;
+			font-variant: normal;
+			text-rendering: auto;
+			line-height: 1;
+			text-transform: none !important;
+			font-family: 'Font Awesome 5 Free';
+			font-weight: 900; /* Ensure icons are bold */
+			background: #4acaa8;
+			border-radius: 100%;
+			color: #ffffff;
+			display: block;
+			height: 2.5em; /* Circle size */
+			width: 2.5em;  /* Circle size */
+			line-height: 2.5em; /* Center icon vertically */
+			position: absolute;
+			text-align: center;
+			top: 0;
+			left: 0;
+			font-size: 1.25em; /* Icon size */
+		}
+		
+		/* Adjust the text and icon alignment */
+		ul.feature-icons li span {
+			margin-left: 3em; /* Create space between the icon and text (this controls the distance) */
+			line-height: 1.5em; /* Adjust line height for proper spacing */
+		}
 
 /* Icons */
 
