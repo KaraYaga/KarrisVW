@@ -165,15 +165,14 @@ const $modalTitle = $modal.find('.modal-title');
 const $modalDesc = $modal.find('.modal-description');
 const $modalImg = $modal.find('.modal-image');
 const $videoFrame = $modal.find('.modal-video');
-const linkContainer = $modal.find('.modal-links')[0]; // Get DOM element
+const linkContainer = $modal.find('.modal-links')[0];
 
-// Modal Function
 function openModal(projectId) {
   const data = {
     DemoReel2025: {
       title: '2025 DemoReel',
       description: 'An overview of my 2024-2025 studies.',
-      video: 'https://www.youtube.com/embed/1Rp6AXl80rY?si=j9z_axcUA38k7-BM', // Video URL with autoplay
+      video: 'https://www.youtube.com/embed/1Rp6AXl80rY?autoplay=1',
       links: []
     },
     leech: {
@@ -196,52 +195,46 @@ function openModal(projectId) {
   const project = data[projectId];
   if (!project) return;
 
-  // Set Title and Description
   $modalTitle.text(project.title);
   $modalDesc.text(project.description);
 
-  // Handle media (image or video)
+  // Show video or image
   if (project.video) {
-    // Hide image, show video iframe
     $modalImg.hide();
     $videoFrame.show();
-    $videoFrame.attr('src', project.video); // Set video source
+    $videoFrame.attr('src', project.video);
   } else {
-    // Hide video iframe, show image
     $videoFrame.hide();
-    $modalImg.show();
-    $modalImg.attr('src', project.image || ''); // Show image if no video
+    $modalImg.show().attr('src', project.image || '');
   }
 
-  // Handle Links
-  linkContainer.innerHTML = ''; // Clear previous links
-  if (project.links && project.links.length > 0) {
+  // Add links
+  linkContainer.innerHTML = '';
+  if (project.links) {
     project.links.forEach(link => {
       const a = document.createElement('a');
       a.href = link.url;
       a.target = '_blank';
       a.textContent = link.label;
       a.style.marginRight = '1em';
-      a.style.display = 'inline-block';
       a.style.fontWeight = 'bold';
       a.style.color = '#0077cc';
       linkContainer.appendChild(a);
     });
   }
 
-  // Show modal
   $modal.fadeIn(200);
 }
 
-// Close modal on X or outside click
-$modal.find('.close').on('click', function () {
+// Close modal and stop video
+$modal.find('.close').on('click', () => {
   $modal.fadeOut(200);
-  $videoFrame.attr('src', ''); // Stop the video by clearing the iframe src
+  $videoFrame.attr('src', ''); // Stop video
 });
 
 $modal.on('click', function (e) {
   if ($(e.target).is($modal)) {
     $modal.fadeOut(200);
-    $videoFrame.attr('src', ''); // Stop the video by clearing the iframe src
+    $videoFrame.attr('src', ''); // Stop video
   }
 });

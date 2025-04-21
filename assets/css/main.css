@@ -3359,6 +3359,8 @@ i.fa-solid, i.fa-brands, i.fa {
 	border-radius: 1em;
 	width: 80%;
 	max-width: 600px;
+	max-height: 90vh;
+	overflow-y: auto;
 	text-align: center;
 	position: relative;
   }

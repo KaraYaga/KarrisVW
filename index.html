@@ -11,7 +11,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<iframe class="modal-video" style="display:none; width:100%; aspect-ratio:16/9; margin-top:1em; border-radius:8px;" frameborder="0" allowfullscreen></iframe>
 		
 	</head>
 	<body class="is-preload">
@@ -502,68 +501,19 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/main.js"></script>
 
 <!--MY ADDITIONS-->
-<!-- MODAL TEMPLATE -->
-		<div id="project-modal" class="modal" style="display:none; position:fixed; z-index:1000; top:0; left:0; width:100%; height:100%; background-color: rgba(0, 0, 0, 0.8);">
-			<div class="modal-content" style="position:relative; margin:10% auto; padding:2em; background:#fff; border-radius:8px; width:80%; max-width:800px;">
+<!-- Modal Template -->
+		<div id="project-modal" class="modal" style="display:none; position:fixed; z-index:1000; top:0; left:0; width:100%; height:100%; background-color: rgba(0, 0, 0, 0.8); overflow-y:auto;">
+			<div class="modal-content" style="position:relative; margin:5% auto; padding:2em; background:#fff; border-radius:8px; width:90%; max-width:800px;">
 			<span class="close" style="position:absolute; top:10px; right:15px; font-size:2em; cursor:pointer;">&times;</span>
 			<h2 class="modal-title"></h2>
 			<img class="modal-image" src="" alt="" style="width:100%; border-radius:8px; margin-top:1em;">
 			
-			<!-- Video iframe (hidden by default) -->
+			<!-- The iframe for YouTube video -->
 			<iframe class="modal-video" style="display:none; width:100%; height:400px; border-radius:8px; margin-top:1em;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 			
 			<p class="modal-description" style="margin-top:1em;"></p>
 			<div class="modal-links" style="margin-top:1em;"></div>
 			</div>
 		</div>
-<!-- Modal Function-->
-		<script>
-			$(document).ready(function () {
-				const $modal = $('#project-modal'); // <- match the actual ID in the HTML
-				const $modalTitle = $('.modal-title');
-				const $modalDesc = $('.modal-description');
-				const $modalImg = $('.modal-image');
-			
-			function openModal(projectId) {
-				const data = {
-				DemoReel2025: {
-					title: '2025 DemoReel',
-					description: 'An overview of my 2024-2025 studies.',
-					image: 'images/DearlyDamned.png'
-				},
-				leech: {
-					title: 'L.E.E.C.H',
-					description: 'A satirical narrative game I prototyped in Unreal...',
-					image: 'images/LEECH.png'
-				},
-				BP: {
-					title: 'Bubble Popper!',
-					description: 'Created in 2 days during the 2025 Global Game Jam...',
-					image: 'images/BubblePopper.png'
-				}
-				};
-			
-				const project = data[projectId];
-				if (project) {
-				$modalTitle.text(project.title);
-				$modalDesc.text(project.description);
-				$modalImg.attr('src', project.image);
-				$modal.fadeIn(200);
-				}
-			}
-			
-			// Close modal
-			$modal.find('.close').on('click', function () {
-				$modal.fadeOut(200);
-			});
-			
-			$modal.on('click', function (e) {
-				if ($(e.target).is($modal)) $modal.fadeOut(200);
-			});
-			
-			// Expose function globally
-			window.openModal = openModal;
-			});
-		</script>
 	</body>
 </html>
