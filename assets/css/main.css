@@ -3325,17 +3325,14 @@ input, select, textarea {
 	}
 
 /* Ensure Font Awesome icons display correctly */
-	i[class^="fa-"], i[class*=" fa-"] 
-	{
+i[class^="fa-"], i[class*=" fa-"] {
     font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands", "Font Awesome 5 Solid", sans-serif;
-    font-weight: 900; /* This applies the solid style */
-	}
+    font-weight: 900; /* Ensure solid icons are displayed */
+}
 
-/* Ensure Font Awesome icons use the correct font family */
-	i.fa-solid, i.fa-brands, i.fa 
-	{
-    font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands", "Font Awesome 5 Solid", sans-serif;
-    font-weight: 900; /* Make sure the solid icons appear */
-	}
+/* Optional: You could also add this to apply a consistent size if you want */
+i.fa-solid, i.fa-brands, i.fa {
+    font-size: 2em; /* Adjust size if needed */
+}
 
 	}
