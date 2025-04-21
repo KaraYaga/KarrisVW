@@ -3317,12 +3317,16 @@ input, select, textarea {
 				padding: 0;
 			}
 
-	/* MY ADDITIONS*/
+/* MY ADDITIONS*/
 
 	.title-line 
 	{
 		white-space: nowrap;
 	}
-
+/* Ensure Font Awesome icons display correctly */
+	i[class^="fa-"], i[class*=" fa-"] {
+    font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands", "Font Awesome 5 Solid", sans-serif;
+    font-weight: 900; /* This applies the solid style */
+	}
 
 	}
