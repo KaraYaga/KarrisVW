@@ -160,43 +160,90 @@
 
 //MY ADDITIONS
 // Modal Setup
-	const $modal = $('#project-modal');
-	const $modalTitle = $modal.find('.modal-title');
-	const $modalDesc = $modal.find('.modal-description');
-	const $modalImg = $modal.find('.modal-image');
+const $modal = $('#project-modal');
+const $modalTitle = $modal.find('.modal-title');
+const $modalDesc = $modal.find('.modal-description');
+const $modalImg = $modal.find('.modal-image');
+const video = $modal.find('.modal-video')[0]; // Get DOM element
+const linkContainer = $modal.find('.modal-links')[0]; // Get DOM element
 
 // Modal Function
 function openModal(projectId) {
-	let data = {
-		DemoReel2025: {
-			title: '2025 DemoReel',
-			description: 'An overview of my 2024-2025 studies.',
-			image: 'images/DearlyDamned.png'
-		},
-		leech: {
-			title: 'L.E.E.C.H',
-			description: 'A satirical narrative game I prototyped in Unreal...',
-			image: 'images/LEECH.png'
-		},
-		BP: {
-			title: 'Bubble Popper!',
-			description: 'Created in 2 days during the 2025 Global Game Jam...',
-			image: 'images/BubblePopper.png'
-		}
-	};
+  const data = {
+    DemoReel2025: {
+      title: '2025 DemoReel',
+      description: 'An overview of my 2024-2025 studies.',
+      video: 'videos/DemoReel_25_VID.mp4',
+	  links: [
+		//
+	  ]
+     
+    },
+    leech: {
+      title: 'L.E.E.C.H',
+      description: 'A satirical narrative game I prototyped in Unreal...',
+      image: 'images/LEECH.png',
+      links: [
+        //{ label: 'GitHub', url: 'https://github.com/yourname/leech' }
+      ]
+    },
+    BP: {
+      title: 'Bubble Popper!',
+      description: 'Created in 2 days during the 2025 Global Game Jam...',
+      image: 'images/BubblePopper.png',
+      links: [
+        { label: 'LinkedIn', url: 'https://www.linkedin.com/in/kvwebb' },
+        { label: 'Global Game Jam', url: 'https://globalgamejam.org/2025/games/bubble-popper' }
+      ]
+    }
+  };
 
-	if (data[projectId]) {
-		$modalTitle.text(data[projectId].title);
-		$modalDesc.text(data[projectId].description);
-		$modalImg.attr('src', data[projectId].image);
-		$modal.fadeIn(200);
-	}
+  const project = data[projectId];
+  if (!project) return;
+
+  $modalTitle.text(project.title);
+  $modalDesc.text(project.description);
+
+  // Handle media
+  if (project.video) {
+    $modalImg.hide();
+    video.style.display = 'block';
+    video.src = project.video;
+    video.load();
+    video.play();
+  } else {
+    video.style.display = 'none';
+    $modalImg.show();
+    $modalImg.attr('src', project.image || '');
+  }
+
+  // Handle links
+  linkContainer.innerHTML = '';
+  if (project.links && project.links.length > 0) {
+    project.links.forEach(link => {
+      const a = document.createElement('a');
+      a.href = link.url;
+      a.target = '_blank';
+      a.textContent = link.label;
+      a.style.marginRight = '1em';
+      a.style.display = 'inline-block';
+      a.style.fontWeight = 'bold';
+      a.style.color = '#0077cc';
+      linkContainer.appendChild(a);
+    });
+  }
+
+  $modal.fadeIn(200);
 }
 
-// Close modal on clicking X or background
-$modal.find('.close').on('click', function() {
-	$modal.fadeOut(200);
+// Close modal on X or outside click
+$modal.find('.close').on('click', function () {
+  $modal.fadeOut(200);
+  video.pause(); // stop video on close
 });
-$modal.on('click', function(e) {
-	if ($(e.target).is($modal)) $modal.fadeOut(200);
+$modal.on('click', function (e) {
+  if ($(e.target).is($modal)) {
+    $modal.fadeOut(200);
+    video.pause(); // stop video on click-away
+  }
 });
