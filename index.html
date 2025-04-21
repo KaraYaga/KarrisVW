@@ -509,44 +509,18 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				<p class="modal-description" style="margin-top:1em;"></p>
 			</div>
 		</div>
-	<!-- Modal DemoReel-->
-		<div id="modal-DemoReel2025" class="modal">
-			<div class="modal-content">
-			  <span class="close" onclick="closeModal('DemoReel2025')">&times;</span>
-			  <h2>DemoReel 2025</h2>
-			  <p>XXX</p>
-			</div>
-		  </div>
-
-	<!-- Modal LEECH-->
-		<div id="modal-leech" class="modal">
-			<div class="modal-content">
-			  <span class="close" onclick="closeModal('leech')">&times;</span>
-			  <h2>L.E.E.C.H</h2>
-			  <p>GitHub Repository link!</p>
-			</div>
-		  </div>
-
-	<!-- Modal Bubble Popper-->
-		<div id="modal-BP" class="modal">
-			<div class="modal-content">
-			  <span class="close" onclick="closeModal('BP')">&times;</span>
-			  <h2>Bubble Popper</h2>
-			  <p>If you want to give Bubble Popper a play click here!</p>
-			</div>
-		  </div>
 
 <!-- Modal Function-->
 		<script>
 			$(document).ready(function () {
-			const $modal = $('#projectModal');
-			const $modalTitle = $('#modal-title');
-			const $modalDesc = $('#modal-desc');
-			const $modalImg = $('#modal-img');
+				const $modal = $('#project-modal'); // <- match the actual ID in the HTML
+				const $modalTitle = $('.modal-title');
+				const $modalDesc = $('.modal-description');
+				const $modalImg = $('.modal-image');
 			
 			function openModal(projectId) {
 				const data = {
-				dearlydamned: {
+				DemoReel2025: {
 					title: '2025 DemoReel',
 					description: 'An overview of my 2024-2025 studies.',
 					image: 'images/DearlyDamned.png'
@@ -556,7 +530,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					description: 'A satirical narrative game I prototyped in Unreal...',
 					image: 'images/LEECH.png'
 				},
-				bubblepopper: {
+				BP: {
 					title: 'Bubble Popper!',
 					description: 'Created in 2 days during the 2025 Global Game Jam...',
 					image: 'images/BubblePopper.png'
