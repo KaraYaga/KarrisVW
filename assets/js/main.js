@@ -202,10 +202,12 @@ function openModal(projectId) {
 
   // Handle media (image or video)
   if (project.video) {
+    // Hide image, show video iframe
     $modalImg.hide();
     $videoFrame.show();
     $videoFrame.attr('src', project.video); // Set video source
   } else {
+    // Hide video iframe, show image
     $videoFrame.hide();
     $modalImg.show();
     $modalImg.attr('src', project.image || ''); // Show image if no video
