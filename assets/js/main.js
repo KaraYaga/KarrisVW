@@ -149,7 +149,7 @@
 			if (breakpoints.active('<=medium'))
 				return $titleBar.height(); // Offset for small screens or smaller
 				console.log(breakpoints.active('<=medium'));
-			return 0; // Offset for larger screens
+			return 0; // Offset for larger screens[attempt] revert
 
 		}
 	});
@@ -190,7 +190,6 @@
 		if (!project) return;
 
 		$modalTitle.text(project.title);
-		$videoFrame.show().attr('src', project.video);
 		linkContainer.innerHTML = '';
 
 		project.links.forEach(link => {
@@ -206,7 +205,11 @@
 		});
 
 		// Show modal
-		$modal.fadeIn(200);
+		$modal.fadeIn(200, function () 
+		{
+			$videoFrame.attr('src', project.video);
+		});
+
 	}
 
 	// Close modal
@@ -227,9 +230,12 @@
 		});
 		
 		function closeModal() {
+			const $modal = $('#project-modal');
+			const $videoFrame = $modal.find('.modal-video');
+		  
+			$videoFrame.attr('src', '').hide(); // Clear and hide iframe
 			$modal.fadeOut(200);
-			$videoFrame.attr('src', ''); // Stops the video
-		}
+		  }
 	});
 
 })(jQuery);
