@@ -213,16 +213,21 @@
 	$(document).ready(function () {
 		const $modal = $('#project-modal');
 		const $videoFrame = $modal.find('.modal-video');
-	
-		$modal.find('.close').on('click', () => {
-		$modal.fadeOut(200);
-		$videoFrame.attr('src', '');
+	  
+		// Close button logic
+		$modal.find('.close').on('click', function () {
+		  closeModal();
 		});
-	
+	  
+		// Click outside content to close
 		$modal.on('click', function (e) {
-		if ($(e.target).is($modal)) {
-			$modal.fadeOut(200);
-			$videoFrame.attr('src', '');
-		}
+		  if ($(e.target).is($modal)) {
+			closeModal();
+		  }
 		});
-	});
+	  
+		function closeModal() {
+		  $modal.fadeOut(200);
+		  $videoFrame.attr('src', ''); // Stops the video
+		}
+	  });

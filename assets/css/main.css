@@ -3364,22 +3364,8 @@ i.fa-solid, i.fa-brands, i.fa {
 	text-align: center;
 	position: relative;
   }
+
   
-  /* Close button */
-  .modal-content .close {
-	position: absolute;
-	top: 1em;
-	right: 1em;
-	font-size: 1.5em;
-	cursor: pointer;
-  }
-  
-  /* Modal image styling */
-  .modal-content img {
-	max-width: 100%;
-	height: auto;
-	margin-bottom: 1em;
-  }
   .modal-links a {
 	display: inline-flex;
 	align-items: center;
@@ -3392,7 +3378,17 @@ i.fa-solid, i.fa-brands, i.fa {
 	font-weight: bold;
 	color: #0077cc;
   }
+  
   .modal-links a i {
 	margin-right: 0.5em;
+  }
+  
+  /* Close button */
+  .modal-content .close {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+	font-size: 1.5em;
+	cursor: pointer;
   }
 	}
