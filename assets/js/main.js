@@ -165,7 +165,7 @@ function openModal(projectId) {
 	// Find the modal and elements inside it
 	const $modal = $('#project-modal');
 	const $modalTitle = $modal.find('.modal-title');
-	const $modalDesc = $modal.find('.modal-description');
+	//const $modalDesc = $modal.find('.modal-description');
 	const $modalImg = $modal.find('.modal-image');
 	const $videoFrame = $modal.find('.modal-video');
 	const linkContainer = $modal.find('.modal-links')[0];  // This is a plain DOM element (not jQuery)
@@ -213,22 +213,26 @@ function openModal(projectId) {
   
 	// Add links if available
 	linkContainer.innerHTML = '';  // Clear previous links
-	if (project.links) {
 	  project.links.forEach(link => {
 		const a = document.createElement('a');
 		a.href = link.url;
 		a.target = '_blank';
-		a.textContent = link.label;
-		a.style.marginRight = '1em';
-		a.style.fontWeight = 'bold';
-		a.style.color = '#0077cc';
+		a.classList.add('modal-link');
+
+		if (link.icon) {
+			const icon = document.createElement('i');
+			icon.className = link.icon;
+			icon.style.marginRight = '0.5em';
+			a.appendChild(icon);
+		}
+	
+		a.appendChild(document.createTextNode(link.label));
 		linkContainer.appendChild(a);
 	  });
 	}
   
 	// Show the modal
 	$modal.fadeIn(200);
-  }
   
   // Close modal and stop video
   $modal.find('.close').on('click', () => {
