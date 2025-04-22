@@ -159,92 +159,70 @@
 })(jQuery);
 
 ///MY ADDITIONS
-// Modal Setup
-
-function openModal(projectId) {
-	// Find the modal and elements inside it
-	const $modal = $('#project-modal');
-	const $modalTitle = $modal.find('.modal-title');
-	//const $modalDesc = $modal.find('.modal-description');
-	const $modalImg = $modal.find('.modal-image');
-	const $videoFrame = $modal.find('.modal-video');
-	const linkContainer = $modal.find('.modal-links')[0];  // This is a plain DOM element (not jQuery)
-  
-	const data = {
-	  DemoReel2025: {
-		title: '2025 DemoReel',
-		video: 'https://www.youtube.com/embed/1Rp6AXl80rY?autoplay=1',
-		links: [
-
-		]
-	  },
-	  leech: {
-		title: 'L.E.E.C.H',
-		video: 'https://www.youtube.com/embed/heLmN15bNNM?autoplay=1',
-		links: 
-		[
-			//{label : 'GitHub', url: 'https://github.com/KaraYaga/L.E.E.C.H_Prototype', icon: 'fa-brands fa-github'},
-		]
-	  },
-	  BP: {
-		title: 'Bubble Popper!',
-		video: 'https://www.youtube.com/embed/H2MdBFFn6f4?autoplay=1',
-		links: [
-			//{ label: 'LinkedIn', url: 'https://www.linkedin.com/posts/kvwebb_globalgamejam-artfx-gamedev-activity-7299728797275152384-07Cu?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE4Gz24Bn0wUTsjcUJhbOqQcJAefb1kvo4g', icon: 'fa-brands fa-linkedin' },
-			//{ label: 'Global Game Jam', url: 'https://globalgamejam.org/games/2025/bubble-popper-have-nice-trip-5', icon: 'fa fa-gamepad' }
-		]
-	  }
-	};
-  
-	const project = data[projectId];
-	if (!project) return;
-  
-	// Set the modal title and description
-	$modalTitle.text(project.title);
-	$modalDesc.text(project.description);
-  
-	// Show video or image
-	if (project.video) {
-	  $modalImg.hide();
-	  $videoFrame.show().attr('src', project.video);
-	  console.log(project.video);
-	} else {
-	  $videoFrame.hide();
-	  $modalImg.show().attr('src', project.image || '');
-	}
-  
-	// Add links if available
-	linkContainer.innerHTML = '';  // Clear previous links
-	  project.links.forEach(link => {
+// Function Modal
+	function openModal(projectId) {
+		const $modal = $('#project-modal');
+		const $modalTitle = $modal.find('.modal-title');
+		const $videoFrame = $modal.find('.modal-video');
+		const linkContainer = $modal.find('.modal-links')[0];
+	
+		const data = {
+		DemoReel2025: {
+			title: '2025 DemoReel',
+			video: 'https://www.youtube.com/embed/1Rp6AXl80rY?autoplay=1',
+			links: []
+		},
+		leech: {
+			title: 'L.E.E.C.H',
+			video: 'https://www.youtube.com/embed/heLmN15bNNM?autoplay=1',
+			links: []
+		},
+		BP: {
+			title: 'Bubble Popper!',
+			video: 'https://www.youtube.com/embed/H2MdBFFn6f4?autoplay=1',
+			links: [
+			{ label: 'LinkedIn', url: 'https://www.linkedin.com/in/kvwebb' },
+			{ label: 'Global Game Jam', url: 'https://globalgamejam.org/2025/games/bubble-popper' }
+			]
+		}
+		};
+	
+		const project = data[projectId];
+		if (!project) return;
+	
+		$modalTitle.text(project.title);
+		$videoFrame.show().attr('src', project.video);
+		linkContainer.innerHTML = '';
+	
+		project.links.forEach(link => {
 		const a = document.createElement('a');
 		a.href = link.url;
 		a.target = '_blank';
-		a.classList.add('modal-link');
-
-		if (link.icon) {
-			const icon = document.createElement('i');
-			icon.className = link.icon;
-			icon.style.marginRight = '0.5em';
-			a.appendChild(icon);
-		}
-	
-		a.appendChild(document.createTextNode(link.label));
+		a.textContent = link.label;
+		a.style.display = 'inline-block';
+		a.style.marginRight = '1em';
+		a.style.color = '#0077cc';
+		a.style.fontWeight = 'bold';
 		linkContainer.appendChild(a);
-	  });
+		});
+	
+		$modal.fadeIn(200);
 	}
-  
-	// Show the modal
-	$modal.fadeIn(200);
-  
-  // Close modal and stop video
-  $modal.find('.close').on('click', () => {
-	$modal.fadeOut(200);
-	$videoFrame.attr('src', '');  // Stop video
-  });
-  
-  $modal.on('click', function (e) {
-	if ($(e.target).is($modal)) {
-	  $modal.fadeOut(200);
-	  $videoFrame.attr('src', '');  // Stop video
-	}
-  });
+	
+	// Close modal
+	$(document).ready(function () {
+		const $modal = $('#project-modal');
+		const $videoFrame = $modal.find('.modal-video');
+	
+		$modal.find('.close').on('click', () => {
+		$modal.fadeOut(200);
+		$videoFrame.attr('src', '');
+		});
+	
+		$modal.on('click', function (e) {
+		if ($(e.target).is($modal)) {
+			$modal.fadeOut(200);
+			$videoFrame.attr('src', '');
+		}
+		});
+	});
