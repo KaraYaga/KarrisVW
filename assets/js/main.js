@@ -174,22 +174,24 @@ function openModal(projectId) {
 	  DemoReel2025: {
 		title: '2025 DemoReel',
 		video: 'https://www.youtube.com/embed/1Rp6AXl80rY?autoplay=1',
-		links: []
+		links: [
+
+		]
 	  },
 	  leech: {
 		title: 'L.E.E.C.H',
 		video: 'https://www.youtube.com/embed/heLmN15bNNM?autoplay=1',
 		links: 
 		[
-			{label : 'GitHub', url: 'https://github.com/KaraYaga/L.E.E.C.H_Prototype', icon: 'fa-brands fa-github'},
+			//{label : 'GitHub', url: 'https://github.com/KaraYaga/L.E.E.C.H_Prototype', icon: 'fa-brands fa-github'},
 		]
 	  },
 	  BP: {
 		title: 'Bubble Popper!',
 		video: 'https://www.youtube.com/embed/H2MdBFFn6f4?autoplay=1',
 		links: [
-			{ label: 'LinkedIn', url: 'https://www.linkedin.com/posts/kvwebb_globalgamejam-artfx-gamedev-activity-7299728797275152384-07Cu?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE4Gz24Bn0wUTsjcUJhbOqQcJAefb1kvo4g', icon: 'fa-brands fa-linkedin' },
-			{ label: 'Global Game Jam', url: 'https://globalgamejam.org/games/2025/bubble-popper-have-nice-trip-5', icon: 'fa fa-gamepad' }
+			//{ label: 'LinkedIn', url: 'https://www.linkedin.com/posts/kvwebb_globalgamejam-artfx-gamedev-activity-7299728797275152384-07Cu?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE4Gz24Bn0wUTsjcUJhbOqQcJAefb1kvo4g', icon: 'fa-brands fa-linkedin' },
+			//{ label: 'Global Game Jam', url: 'https://globalgamejam.org/games/2025/bubble-popper-have-nice-trip-5', icon: 'fa fa-gamepad' }
 		]
 	  }
 	};
@@ -204,8 +206,8 @@ function openModal(projectId) {
 	// Show video or image
 	if (project.video) {
 	  $modalImg.hide();
-	  $videoFrame.show();
-	  $videoFrame.attr('src', project.video);
+	  $videoFrame.show().attr('src', project.video);
+	  console.log(project.video);
 	} else {
 	  $videoFrame.hide();
 	  $modalImg.show().attr('src', project.image || '');
