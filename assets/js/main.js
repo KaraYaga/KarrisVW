@@ -158,14 +158,13 @@
 	///MY ADDITIONS
 	// Function Modal
 	// Get Elements
-	window.openModal = function(projectId) {
+	function openModal(projectId) {
 		const $modal = $('#project-modal');
 		const $modalTitle = $modal.find('.modal-title');
 		const $videoFrame = $modal.find('.modal-video');
 		const linkContainer = $modal.find('.modal-links')[0];
-
-		const data = 
-		{
+	
+		const data = {
 			DemoReel2025: {
 				title: '2025 DemoReel',
 				video: 'https://www.youtube.com/embed/1Rp6AXl80rY?autoplay=1',
@@ -185,14 +184,14 @@
 				]
 			}
 		};
-
+	
 		const project = data[projectId];
 		if (!project) return;
-
+	
 		$modalTitle.text(project.title);
 		$videoFrame.show().attr('src', project.video);
 		linkContainer.innerHTML = '';
-
+	
 		project.links.forEach(link => {
 			const a = document.createElement('a');
 			a.href = link.url;
@@ -204,36 +203,30 @@
 			a.style.fontWeight = 'bold';
 			linkContainer.appendChild(a);
 		});
-
-		// Show modal
+	
 		$modal.fadeIn(200);
-
 	}
 
 	// Close modal
-	$(document).ready(function () {
-		const $modal = $('#project-modal');
-		const $videoFrame = $modal.find('.modal-video');
-		
-		// Close button logic
-		$modal.find('.close').on('click', function () {
-			closeModal();
-		});
-		
-		// Click outside content to close
-		$modal.on('click', function (e) {
-			if ($(e.target).is($modal)) {
-				closeModal();
-			}
-		});
-		
-		function closeModal() {
+		$(document).ready(function () {
 			const $modal = $('#project-modal');
 			const $videoFrame = $modal.find('.modal-video');
-		  
-			$videoFrame.attr('src', '').hide(); // Clear and hide iframe
-			$modal.fadeOut(200);
-		  }
-	});
-
-})(jQuery);
+	
+			// Close button
+			$modal.find('.close').on('click', function () {
+				closeModal();
+			});
+	
+			// Click outside modal content to close
+			$modal.on('click', function (e) {
+				if ($(e.target).is($modal)) {
+					closeModal();
+				}
+			});
+	
+			function closeModal() {
+				$videoFrame.attr('src', '').hide(); // Stop video and hide
+				$modal.fadeOut(200);
+			}
+		});
+	})(jQuery);
