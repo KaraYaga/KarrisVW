@@ -158,7 +158,7 @@
 	///MY ADDITIONS
 	// Function Modal
 	// Get Elements
-	function openModal(projectId) {
+	window.openModal = function(projectId) {
 		const $modal = $('#project-modal');
 		const $modalTitle = $modal.find('.modal-title');
 		const $videoFrame = $modal.find('.modal-video');
