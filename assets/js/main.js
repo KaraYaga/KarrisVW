@@ -173,23 +173,23 @@ function openModal(projectId) {
 	const data = {
 	  DemoReel2025: {
 		title: '2025 DemoReel',
-		description: 'An overview of my 2024-2025 studies.',
 		video: 'https://www.youtube.com/embed/1Rp6AXl80rY?autoplay=1',
 		links: []
 	  },
 	  leech: {
 		title: 'L.E.E.C.H',
-		description: 'A satirical narrative game I prototyped in Unreal...',
-		image: 'images/LEECH.png',
-		links: []
+		video: 'https://www.youtube.com/embed/heLmN15bNNM?autoplay=1',
+		links: 
+		[
+			{label : 'GitHub', url: 'https://github.com/KaraYaga/L.E.E.C.H_Prototype', icon: 'fa-brands fa-github'},
+		]
 	  },
 	  BP: {
 		title: 'Bubble Popper!',
-		description: 'Created in 2 days during the 2025 Global Game Jam...',
-		image: 'images/BubblePopper.png',
+		video: 'https://www.youtube.com/embed/H2MdBFFn6f4?autoplay=1',
 		links: [
-		  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/kvwebb' },
-		  { label: 'Global Game Jam', url: 'https://globalgamejam.org/2025/games/bubble-popper' }
+			{ label: 'LinkedIn', url: 'https://www.linkedin.com/posts/kvwebb_globalgamejam-artfx-gamedev-activity-7299728797275152384-07Cu?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE4Gz24Bn0wUTsjcUJhbOqQcJAefb1kvo4g', icon: 'fa-brands fa-linkedin' },
+			{ label: 'Global Game Jam', url: 'https://globalgamejam.org/games/2025/bubble-popper-have-nice-trip-5', icon: 'fa fa-gamepad' }
 		]
 	  }
 	};
