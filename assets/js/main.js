@@ -141,14 +141,15 @@
 		});
 
 	// Scrolly.
+
 	$('.scrolly').scrolly({
 		speed: 1000,
 		offset: function() {
 
 			if (breakpoints.active('<=medium'))
-				return $titleBar.height();
-
-			return 0;
+				return $titleBar.height(); // Offset for small screens or smaller
+				console.log(breakpoints.active('<=medium'));
+			return 0; // Offset for larger screens
 
 		}
 	});
@@ -163,7 +164,8 @@
 		const $videoFrame = $modal.find('.modal-video');
 		const linkContainer = $modal.find('.modal-links')[0];
 
-		const data = {
+		const data = 
+		{
 			DemoReel2025: {
 				title: '2025 DemoReel',
 				video: 'https://www.youtube.com/embed/1Rp6AXl80rY?autoplay=1',
