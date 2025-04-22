@@ -190,6 +190,7 @@
 		if (!project) return;
 
 		$modalTitle.text(project.title);
+		$videoFrame.show().attr('src', project.video);
 		linkContainer.innerHTML = '';
 
 		project.links.forEach(link => {
@@ -205,10 +206,7 @@
 		});
 
 		// Show modal
-		$modal.fadeIn(200, function () 
-		{
-			$videoFrame.attr('src', project.video);
-		});
+		$modal.fadeIn(200);
 
 	}
 
